@@ -164,7 +164,7 @@ nav a.active {
     max-width: 50%;
     height: auto;
     filter: brightness(0.8);
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
 }
 
 .hero h1 {
@@ -179,7 +179,7 @@ nav a.active {
 
 @media (min-width: 768px) {
     .hero img {
-        max-width: 20%;
+        max-width: 30%;
     }
     .hero h1 {
         font-size: 3em;
