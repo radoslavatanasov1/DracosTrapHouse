@@ -1,0 +1,209 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Body and general styles */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Matrix background */
+.matrix-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif') repeat;
+    opacity: 0.2;
+}
+
+/* Navigation bar */
+nav {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1em 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex: 1;
+}
+
+nav a {
+    color: rgb(205, 205, 205);
+    padding: 0.5em 1em;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    flex: 1;
+}
+
+nav a::before, nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #0f0;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+nav a::before {
+    top: 0;
+}
+
+nav a::after {
+    bottom: 0;
+}
+
+nav a:hover::before, nav a:hover::after {
+    transform: scaleX(1);
+}
+
+nav a.active {
+    color: #fff;
+}
+
+/* Hamburger menu for mobile */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 20;
+}
+
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 1em;
+    }
+
+    .nav-links a {
+        margin: 0.5em 0;
+    }
+
+    .nav-active .nav-links {
+        display: flex;
+        max-height: 500px;
+    }
+
+    .hamburger-menu.toggle .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger-menu.toggle .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-menu.toggle .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+/* Developer Section */
+.developer-section {
+    padding: 5em 1em;
+    text-align: center;
+    background-color: transparent; /* Transparent to show the matrix */
+    color: #fff;
+    min-height: 100vh;
+}
+
+.developer-section h1 {
+    font-size: 2.5em;
+    margin-bottom: 1.5em;
+}
+
+.developer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2em;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.developer-card {
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.developer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 255, 0, 0.4);
+}
+
+.developer-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.developer-card img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.5);
+}
+
+.developer-card h2 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+}
+
+.developer-card p {
+    font-size: 1em;
+    color: #aaa;
+    margin-bottom: 1em;
+}
+
+.developer-card a {
+    color: #0f0;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.developer-card a:hover {
+    color: lime;
+}
+
+/* Footer */
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 1em;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
