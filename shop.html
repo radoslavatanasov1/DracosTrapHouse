@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="shop-style.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Matrix Background Animation -->
+    <div class="matrix-bg"></div>
+
+    <!-- Navigation -->
     <nav>
         <div class="hamburger-menu">
             <div class="bar"></div>
@@ -16,42 +19,46 @@
         </div>
         <div class="nav-links">
             <a href="home.html" class="nav-link">Home</a>
-            <a href="home.html#about" class="nav-link">About Us</a>
-            <a href="shop.html" class="nav-link">Shop</a>
+            <a href="about.html" class="nav-link">About Us</a>
+            <a href="shop.html" class="nav-link active">Shop</a>
             <a href="contact-us.html" class="nav-link">Contact Us</a>
             <a href="our-developers.html" class="nav-link">Our Developers</a>
         </div>
     </nav>
 
-    <!-- Shop Title -->
-    <header class="shop-header">
-        <h1>Our Products</h1>
-    </header>
+    <!-- Shop Section -->
+    <section class="shop-section">
+        <h1>Shop Our Products</h1>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="images/product1.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <h3>Product 1</h3>
+                    <p>Brief description of Product 1 goes here.</p>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="images/product2.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <h3>Product 2</h3>
+                    <p>Brief description of Product 2 goes here.</p>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
 
-    <!-- Products Section -->
-    <section class="products">
-        <!-- Product 1 -->
-        <div class="product-card">
-            <img src="/images/product1-placeholder.png" alt="Product 1" class="product-image">
-            <h2>Product 1 Title</h2>
-            <p>Short description of product 1 goes here. You can add more details later.</p>
-            <button class="buy-now">Buy Now</button>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="product-card">
-            <img src="/images/product2-placeholder.png" alt="Product 2" class="product-image">
-            <h2>Product 2 Title</h2>
-            <p>Short description of product 2 goes here. You can add more details later.</p>
-            <button class="buy-now">Buy Now</button>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="product-card">
-            <img src="/images/product3-placeholder.png" alt="Product 3" class="product-image">
-            <h2>Product 3 Title</h2>
-            <p>Short description of product 3 goes here. You can add more details later.</p>
-            <button class="buy-now">Buy Now</button>
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="images/product3.jpg" alt="Product 3" class="product-image">
+                <div class="product-info">
+                    <h3>Product 3</h3>
+                    <p>Brief description of Product 3 goes here.</p>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -59,7 +66,5 @@
     <footer>
         <p>&copy; 2024 DracosTrapHouse. All rights reserved.</p>
     </footer>
-
-    <script src="app.js"></script>
 </body>
 </html>
