@@ -103,11 +103,6 @@ nav a.active {
     animation: cart-move 0.5s infinite linear;
 }
 
-/* Remove default hover effect from the cart icon */
-.cart-link:hover::before, .cart-link:hover::after {
-    display: none; /* Ensures no green line appears */
-}
-
 /* Rocking effect */
 @keyframes cart-move {
     0% {
@@ -169,35 +164,101 @@ nav a.active {
 
 /* Product Page Styling */
 .product-section {
-    padding: 5em 1em;
+    padding: 8em 1em; /* Increased padding to lower the content */
     text-align: center;
     background-color: transparent;
     color: #fff;
 }
 
+/* Main product and thumbnail container */
 .product-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
     gap: 2em;
 }
 
-.product-image {
+/* Main Product Image */
+.product-main-image img {
     max-width: 400px;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-bottom: 1em; /* Added margin to create space below the main image */
 }
 
+.product-main-image img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    filter: brightness(70%); /* Darker, more dramatic effect */
+}
+
+/* Thumbnails */
+.product-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 1em; /* Increased gap to avoid overlap on hover */
+    margin-top: 1em; /* Adjusts distance from the main image */
+}
+
+.product-thumbnails img {
+    width: 60px;
+    height: auto;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.product-thumbnails img:hover {
+    transform: scale(1.1); /* Slight zoom effect */
+    filter: brightness(70%); /* Darker effect on thumbnails */
+}
+
+/* Product Details with Black Background Screen */
 .product-details {
     text-align: left;
     max-width: 500px;
+    background-color: rgba(0, 0, 0, 0.85); /* Black hover screen */
+    padding: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-.product-details p {
+.product-details h1 {
+    font-size: 2em;
+    color: #0f0; /* Changed to green for product title */
+    margin-bottom: 0.5em;
+}
+
+.product-details .price {
+    font-size: 1.5em;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.product-details .free-shipping {
+    font-size: 1em;
+    color: #aaa;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+
+.product-details h1, .product-details .price, .product-details .free-shipping {
+    text-align: left;
+}
+
+/* Placeholder for live Amazon rating */
+.product-details .amazon-rating {
+    font-size: 1.2em;
+    color: #ffd700;
+    margin-top: 1em;
+}
+
+.product-details p, .product-details ul {
     font-size: 1.2em;
     line-height: 1.6;
     color: #aaa;

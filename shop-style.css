@@ -116,52 +116,6 @@ nav a.active {
     }
 }
 
-/* Hamburger menu for mobile */
-.hamburger-menu {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    z-index: 20;
-}
-
-@media (max-width: 768px) {
-    .hamburger-menu {
-        display: flex;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        padding: 1em;
-    }
-
-    .nav-links a {
-        margin: 0.5em 0;
-    }
-
-    .nav-active .nav-links {
-        display: flex;
-        max-height: 500px;
-    }
-
-    .hamburger-menu.toggle .bar:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-
-    .hamburger-menu.toggle .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger-menu.toggle .bar:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
-}
-
 /* Shop Page */
 .shop-section {
     padding: 3em 1em;
@@ -188,14 +142,9 @@ nav a.active {
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 255, 0, 0.4);
-}
-
+/* Product image */
 .product-image {
     width: 100%;
     height: auto;
@@ -203,6 +152,7 @@ nav a.active {
     border-bottom: 2px solid #0f0;
 }
 
+/* Product info */
 .product-info {
     padding: 1.5em;
     text-align: center;
@@ -220,19 +170,23 @@ nav a.active {
     margin-bottom: 1em;
 }
 
+/* Buy Now Button with Shrink Effect */
 .buy-now {
     background-color: #0f0;
     color: #000;
     padding: 0.75em 1.5em;
     border: none;
     border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
 .buy-now:hover {
-    background-color: lime;
-    transform: scale(1.05);
+    transform: scale(0.95); /* Shrinks button slightly on hover */
 }
 
 /* Footer */
