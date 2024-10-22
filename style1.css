@@ -1,10 +1,7 @@
 /* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-h1 {
-    text-align: center;
-}
-
+/* Body and general styles */
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -27,23 +24,24 @@ body {
 /* Navigation bar */
 nav {
     background: rgba(0, 0, 0, 0.8);
-    padding: 1em;
+    padding: 1em 0;
     text-align: center;
-    position: fixed; /* Fix the navigation bar at the top */
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 10;
     display: flex;
-    justify-content: space-evenly; /* Ensure even spacing */
+    justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
 }
 
+/* Ensure even spacing and link styling is consistent */
 .nav-links {
     display: flex;
-    justify-content: space-evenly; /* Evenly distribute the nav links */
+    justify-content: space-evenly;
     align-items: center;
-    flex: 1; /* This makes sure the nav links take up the remaining space */
+    flex: 1;
 }
 
 nav a {
@@ -53,32 +51,34 @@ nav a {
     font-weight: bold;
     position: relative;
     cursor: pointer;
-    flex: 1; /* Ensure even space between each link */
-    text-align: center; /* Align text centrally */
+    text-align: center;
+    flex: 1;
+    line-height: 1.5em;
 }
 
-nav a::before, nav a::after {
+/* Remove hover effect from cart-link */
+.nav-links a:not(.cart-link)::before, 
+.nav-links a:not(.cart-link)::after {
     content: '';
     position: absolute;
     width: 100%;
     height: 2px;
     background: #0f0;
-    top: 50%;
     left: 0;
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
 
-nav a::before {
+.nav-links a:not(.cart-link)::before {
     top: 0;
 }
 
-nav a::after {
-    top: auto;
+.nav-links a:not(.cart-link)::after {
     bottom: 0;
 }
 
-nav a:hover::before, nav a:hover::after {
+.nav-links a:not(.cart-link):hover::before, 
+.nav-links a:not(.cart-link):hover::after {
     transform: scaleX(1);
 }
 
@@ -86,6 +86,37 @@ nav a.active {
     color: #fff;
 }
 
+/* Cart Icon */
+.cart-icon {
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 15;
+}
+
+/* Cart Icon Hover - Custom Effect */
+.cart-link:hover .cart-icon {
+    filter: drop-shadow(0 0 10px #0f0); /* Outline the shape of the cat and cart */
+    animation: cart-move 0.5s infinite linear;
+}
+
+/* Rocking effect */
+@keyframes cart-move {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* For smaller screens, adjust the hamburger menu */
 .hamburger-menu {
     display: none;
     flex-direction: column;
@@ -93,7 +124,6 @@ nav a.active {
     z-index: 20;
 }
 
-/* For smaller screens, make the menu collapsible */
 @media (max-width: 768px) {
     .hamburger-menu {
         display: flex;
@@ -109,44 +139,15 @@ nav a.active {
         left: 0;
         padding: 1em;
     }
-}
 
-nav a {
-    color: rgb(205, 205, 205);
-    margin: 0.5em 1em;
-    text-decoration: none;
-    font-weight: bold;
-    position: relative;
-    cursor: pointer;
-}
+    .nav-links a {
+        margin: 0.5em 0;
+    }
 
-nav a::before, nav a::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: #0f0;
-    top: 50%;
-    left: 0;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-}
-
-nav a::before {
-    top: 0;
-}
-
-nav a::after {
-    top: auto;
-    bottom: 0;
-}
-
-nav a:hover::before, nav a:hover::after {
-    transform: scaleX(1);
-}
-
-nav a.active {
-    color: #fff;
+    .nav-active .nav-links {
+        display: flex;
+        max-height: 500px;
+    }
 }
 
 /* Hero section */
@@ -189,221 +190,7 @@ nav a.active {
     }
 }
 
-/* Modern Product Section */
-.product-section {
-    padding: 3em 1em;
-    background-color: #111;
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5em;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.product-card {
-    background: rgba(0, 0, 0, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 255, 0, 0.4);
-}
-
-.product-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-bottom: 2px solid #0f0;
-}
-
-.product-info {
-    padding: 1.5em;
-    text-align: center;
-}
-
-.product-info h3 {
-    font-size: 1.5em;
-    color: #fff;
-    margin-bottom: 0.5em;
-}
-
-.product-info p {
-    font-size: 1em;
-    color: #aaa;
-    margin-bottom: 1em;
-}
-
-.buy-now {
-    background-color: #0f0;
-    color: #000;
-    padding: 0.75em 1.5em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.buy-now:hover {
-    background-color: lime;
-    transform: scale(1.05);
-}
-
-/* Hire a Dev Section */
-.section {
-    padding: 2em 1em;
-    text-align: center;
-}
-
-.section h2 {
-    font-size: 2.5em;
-    margin-bottom: 1em;
-}
-
-.section .dev-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.dev {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 500px;
-    padding: 1.5em;
-    margin-bottom: 1.5em;
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.dev:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 25px 50px rgba(0, 255, 0, 0.3);
-}
-
-.dev-details {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.dev-text {
-    flex-grow: 1;
-    padding-right: 20px;
-}
-
-.dev-text h3 {
-    font-size: 1.8em;
-    color: #fff;
-    margin-bottom: 0.5em;
-}
-
-.dev-text p {
-    font-size: 1em;
-    color: #aaa;
-    margin-bottom: 0.5em;
-}
-
-.dev-text a {
-    color: #0f0;
-    text-decoration: none;
-}
-
-.dev-text a:hover {
-    text-decoration: underline;
-}
-
-.dev-image {
-    flex-shrink: 0;
-}
-
-.dev-image img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.dev-image img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.5);
-}
-
-/* Section styling */
-.section h2 {
-    font-size: 2em;
-    margin-bottom: 1em;
-}
-
-.section p {
-    font-size: 1em;
-    color: #aaa;
-    max-width: 800px;
-    margin: 0 auto 2em auto;
-}
-
-.section .dev-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.section .dev {
-    margin: 1em;
-    padding: 1em;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    width: 100%;
-    max-width: 500px;
-    text-align: left;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    perspective: 1000px;
-}
-
-.section .dev:hover {
-    transform: translateZ(10px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-}
-
-.section .dev-info {
-    position: relative;
-}
-
-.section .dev:hover {
-    box-shadow: 0 20px 30px rgba(0, 255, 0, 0.3);
-}
-
-.section .dev h3 {
-    font-size: 1.5em;
-    margin-bottom: 0.5em;
-}
-
-.section .dev p {
-    font-size: 1em;
-    color: #aaa;
-}
-
-/* Footer styling */
-footer {
-    background: rgba(0, 0, 0, 0.8);
-    text-align: center;
-    padding: 1em;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
+/* About Section */
 .about {
     display: flex;
     flex-direction: column;
@@ -450,143 +237,14 @@ footer {
     box-shadow: 0 10px 20px rgba(0, 255, 0, 0.5);
 }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .about {
-        padding: 1.5em 1em;
-    }
-
-    .about-content h2 {
-        font-size: 1.8em;
-    }
-
-    .about-content p {
-        font-size: 1.1em;
-    }
-
-    .about-image {
-        width: 150px;
-    }
-
-    /* Responsive navigation */
-    .hamburger-menu {
-        display: flex;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        padding: 1em;
-        transition: max-height 0.3s ease-in-out;
-        max-height: 0;
-        overflow: hidden;
-    }
-
-    .nav-links a {
-        margin: 0.5em 0;
-    }
-
-    .nav-active .nav-links {
-        display: flex;
-        max-height: 500px; /* Arbitrary large value to ensure full expansion */
-    }
-
-    .hamburger-menu.toggle .bar:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-
-    .hamburger-menu.toggle .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger-menu.toggle .bar:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
-
-    /* Responsive hero section */
-    .hero img {
-        max-width: 80%;
-    }
-
-    .hero h1 {
-        font-size: 2em;
-    }
-
-    .hero p {
-        font-size: 1em;
-    }
-
-    /* Responsive product display */
-    .holo-display {
-        width: 100%;
-        padding: 1em;
-    }
-
-    .holo-viewport {
-        height: 250px;
-    }
-
-    .controls button {
-        padding: 15px;
-        font-size: 1.8em;
-    }
-
-    .controls .buy-now {
-        padding: 15px;
-        font-size: 1.3em;
-    }
-
-    .product-info h3 {
-        font-size: 1.2em;
-    }
-
-    .product-info p {
-        font-size: 0.9em;
-    }
-
-    /* Responsive section */
-    .section h2 {
-        font-size: 1.8em;
-    }
-
-    .section p {
-        font-size: 0.9em;
-    }
-
-    .section .dev {
-        width: 100%;
-    }
-
-    .section .dev h3 {
-        font-size: 1.3em;
-    }
-
-    .section .dev p {
-        font-size: 0.9em;
-    }
-
-    .glitch {
-        font-size: 2em;
-    }
-
-    .dev-details {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .dev-text {
-        padding-right: 0;
-        margin-bottom: 1em;
-    }
-
-    .dev-image {
-        margin-bottom: 1em;
-    }
+/* Footer */
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 1em;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 /* Glitch effect */
@@ -600,7 +258,7 @@ footer {
 
 @keyframes glitch {
     0% { transform: translate(0); }
-     20% { transform: translate(-2px, 2px); }
+    20% { transform: translate(-2px, 2px); }
     40% { transform: translate(2px, -2px); }
     60% { transform: translate(-2px, -2px); }
     80% { transform: translate(2px, 2px); }
@@ -609,43 +267,4 @@ footer {
 
 a {
     color: #0f0;
-}
-
-/* Loading Screen */
-#loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.5s ease;
-}
-
-#loading-screen.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Spinner */
-.spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(0, 255, 0, 0.3);
-    border-top: 5px solid #0f0;
-    border-radius: 50%;
-    animation: spin 0.1s linear infinite;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
 }
