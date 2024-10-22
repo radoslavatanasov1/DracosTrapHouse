@@ -121,7 +121,7 @@ nav a.active {
     padding: 3em 1em;
     background-color: transparent;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 15px;
 }
 
 .shop-section h1 {
@@ -170,7 +170,7 @@ nav a.active {
     margin-bottom: 1em;
 }
 
-/* Buy Now Button with Shrink Effect */
+/* Buy Now Button with Hover Effect */
 .buy-now {
     background-color: #0f0;
     color: #000;
@@ -182,11 +182,12 @@ nav a.active {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .buy-now:hover {
     transform: scale(0.95); /* Shrinks button slightly on hover */
+    box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.8); /* Adds a green glow */
 }
 
 /* Footer */
