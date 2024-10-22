@@ -36,7 +36,7 @@ nav {
     flex-wrap: wrap;
 }
 
-/* Ensure even spacing and link styling is consistent */
+/* Nav links styling with hover effect */
 .nav-links {
     display: flex;
     justify-content: space-evenly;
@@ -44,7 +44,7 @@ nav {
     flex: 1;
 }
 
-nav a {
+nav a:not(.cart-link) { /* Remove hover effect from cart-link */
     color: rgb(205, 205, 205);
     padding: 0.5em 1em;
     text-decoration: none;
@@ -52,8 +52,31 @@ nav a {
     position: relative;
     cursor: pointer;
     text-align: center;
-    flex: 1;
     line-height: 1.5em;
+}
+
+/* Hover effect for all nav links except cart-link */
+nav a:not(.cart-link)::before, nav a:not(.cart-link)::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #0f0;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+nav a:not(.cart-link)::before {
+    top: 0;
+}
+
+nav a:not(.cart-link)::after {
+    bottom: 0;
+}
+
+nav a:not(.cart-link):hover::before, nav a:not(.cart-link):hover::after {
+    transform: scaleX(1);
 }
 
 /* Cart Icon */
@@ -71,7 +94,7 @@ nav a {
 .cart-badge {
     position: absolute;
     top: -10px; /* Keep it closer to the icon */
-    right: 95px; /* Adjust this to position it correctly near the icon */
+    right: -10px; /* Adjusted to position it correctly near the icon */
     background-color: #0f0;
     color: #000;
     border-radius: 50%; /* Ensures the shape is a perfect circle */
@@ -85,9 +108,10 @@ nav a {
     display: none; /* Hidden by default */
 }
 
-/* Cart Icon Hover - Custom Effect */
+/* Cart Icon Hover - Only Shadow and Rocking Effect */
 .cart-link:hover .cart-icon {
     filter: drop-shadow(0 0 10px #0f0); /* Only apply shadow effect */
+    animation: cart-move 0.5s infinite linear; /* Rocking effect */
 }
 
 /* Rocking effect */
@@ -107,121 +131,112 @@ nav a {
     position: relative; /* Important for the badge positioning */
 }
 
-/* Product Page Styling */
-.product-section {
-    padding: 8em 1em; /* Increased padding to lower the content */
+/* Cart Section */
+.cart-section {
+    padding: 8em 1em;
     text-align: center;
     background-color: transparent;
     color: #fff;
 }
 
-/* Main product and thumbnail container */
-.product-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    max-width: 1200px;
+.cart-section h1 {
+    font-size: 2.5em;
+    margin-bottom: 1.5em;
+}
+
+.cart-container {
+    max-width: 800px;
     margin: 0 auto;
-    gap: 2em;
-}
-
-/* Main Product Image */
-.product-main-image img {
-    max-width: 400px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
-    transition: transform 0.3s ease, filter 0.3s ease;
-    margin-bottom: 1em; /* Added margin to create space below the main image */
-}
-
-.product-main-image img:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
-    filter: brightness(70%); /* Darker, more dramatic effect */
-}
-
-/* Thumbnails */
-.product-thumbnails {
-    display: flex;
-    justify-content: center;
-    gap: 1em; /* Increased gap to avoid overlap on hover */
-    margin-top: 1em; /* Adjusts distance from the main image */
-}
-
-.product-thumbnails img {
-    width: 60px;
-    height: auto;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.product-thumbnails img:hover {
-    transform: scale(1.1); /* Slight zoom effect */
-    filter: brightness(70%); /* Darker effect on thumbnails */
-}
-
-/* Product Details with Black Background Screen */
-.product-details {
-    text-align: left;
-    max-width: 500px;
-    background-color: rgba(0, 0, 0, 0.85); /* Black hover screen */
-    padding: 1.5em;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 2em;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-.product-details h1 {
-    font-size: 2em;
-    color: #0f0; /* Changed to green for product title */
-    margin-bottom: 0.5em;
+/* Cart Item */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2em;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1em;
+    border-radius: 10px;
 }
 
-.product-details .price {
-    font-size: 1.5em;
+.cart-item-image {
+    max-width: 100px;
+    border-radius: 10px;
+}
+
+.cart-item-details {
+    text-align: left;
+    flex-grow: 1;
+    margin-left: 1em;
+}
+
+.cart-item-details h3 {
+    font-size: 1.2em;
+    color: #0f0;
+}
+
+.cart-item-details p {
+    font-size: 1.2em;
     color: #fff;
-    font-weight: bold;
-    margin-bottom: 0.5em;
 }
 
-.product-details .free-shipping {
-    font-size: 1em;
-    color: #aaa;
-    text-transform: uppercase;
+/* Quantity Control */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5em;
+}
+
+.quantity-btn {
+    background-color: #0f0;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    border: none;
+}
+
+/* Remove Item Button */
+.remove-item {
+    background-color: #f00;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Cart Summary */
+.cart-summary {
+    text-align: left;
+    margin-top: 2em;
+}
+
+.cart-summary h2 {
+    font-size: 1.5em;
+    color: #0f0;
     margin-bottom: 1em;
 }
 
-.product-details h1, .product-details .price, .product-details .free-shipping {
-    text-align: left;
-}
-
-/* Placeholder for live Amazon rating */
-.product-details .amazon-rating {
+.cart-summary p {
     font-size: 1.2em;
-    color: #ffd700;
-    margin-top: 1em;
+    color: #fff;
 }
 
-.product-details p, .product-details ul {
-    font-size: 1.2em;
-    line-height: 1.6;
-    color: #aaa;
-}
-
-.product-details ul {
-    list-style-type: square;
-    margin: 1em 0;
-    padding-left: 1.5em;
-}
-
-.product-details ul li {
-    font-size: 1em;
-    color: #aaa;
-    margin-bottom: 0.5em;
-}
-
-.buy-now {
+/* Checkout Button */
+.checkout-btn {
     background-color: #0f0;
     color: #000;
     padding: 0.75em 1.5em;
@@ -233,10 +248,9 @@ nav a {
     transition: all 0.3s ease;
 }
 
-.buy-now:hover {
+.checkout-btn:hover {
     background-color: lime;
     transform: scale(1.05);
-    text-decoration: none; /* Remove underline */
 }
 
 /* Footer */
