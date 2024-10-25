@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page - LED Headlamp</title>
+    <link rel="stylesheet" href="headlamp-style.css">
+</head>
+<body>
+    <!-- Matrix Background Animation -->
+    <div class="matrix-bg"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="nav-links">
+            <a href="home.html" class="nav-link">Home</a>
+            <a href="home.html#about" class="nav-link">About Us</a>
+            <a href="shop.html" class="nav-link">Shop</a>
+            <a href="contact-us.html" class="nav-link">Contact Us</a>
+            <a href="our-developers.html" class="nav-link">Our Developers</a>
+            <!-- Cart Icon with Badge -->
+            <a href="cart.html" class="cart-link">
+                <img src="images/addtoCart.png" alt="Cart Icon" class="cart-icon">
+                <span id="cart-count" class="cart-badge">0</span>
+            </a>
+        </div>
+    </nav>    
+
+    <!-- Product Section -->
+    <section class="product-section">
+        <div class="product-container">
+            <!-- Main Product Image and Thumbnails -->
+            <div class="product-images">
+                <div class="product-main-image">
+                    <img src="headlamp/main1.jpeg" alt="Main Headlamp Image" id="main-image">
+                </div>
+
+                <!-- Thumbnail Images -->
+                <div class="product-thumbnails">
+                    <img src="headlamp/main1.jpeg" alt="Thumbnail 1" class="thumbnail" onclick="changeImage(this)">
+                    <img src="headlamp/specifications.jpg" alt="Thumbnail 2" class="thumbnail" onclick="changeImage(this)">
+                    <img src="headlamp/lightingModes.jpg" alt="Thumbnail 3" class="thumbnail" onclick="changeImage(this)">
+                    <img src="headlamp/rechargable.jpg" alt="Thumbnail 3" class="thumbnail" onclick="changeImage(this)">
+                    <img src="headlamp/waterResistant.jpg" alt="Thumbnail 3" class="thumbnail" onclick="changeImage(this)">
+                    <img src="headlamp/lightRange.jpg" alt="Thumbnail 3" class="thumbnail" onclick="changeImage(this)">
+                    <img src="headlamp/included.jpg" alt="Thumbnail 3" class="thumbnail" onclick="changeImage(this)">
+                </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+                <h1>LED Headlamp</h1>
+                <div class="price">$8.99</div>
+                <div class="free-shipping">+ Free Shipping</div>
+
+                <div class="amazon-rating">Amazon Rating: ★★★★☆</div>
+
+                <p>Illuminate your surroundings with this powerful LED headlamp. Perfect for hands-free lighting in dark environments.</p>
+                <ul>
+                    <li>Adjustable brightness modes</li>
+                    <li>Rechargeable with long battery life</li>
+                    <li>Comfortable, secure head strap</li>
+                    <li>Great for work, outdoor adventures, and emergencies</li>
+                </ul>
+
+                <!-- Quantity and Add to Cart -->
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" value="1" min="1">
+                <button class="add-to-cart" id="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 DracosTrapHouse. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function changeImage(element) {
+            const mainImage = document.getElementById('main-image');
+            mainImage.src = element.src;
+        }
+
+        let cartCount = 0;
+
+        document.getElementById('add-to-cart').addEventListener('click', function() {
+            const quantity = parseInt(document.getElementById('quantity').value);
+            cartCount += quantity;
+
+            const cartBadge = document.getElementById('cart-count');
+            cartBadge.textContent = cartCount;
+            cartBadge.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
