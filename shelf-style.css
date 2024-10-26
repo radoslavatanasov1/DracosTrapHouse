@@ -137,6 +137,30 @@ nav a.active {
     z-index: 15;
 }
 
+/* Add to Cart Button Styles */
+.buy-now {
+    background-color: #0f0; /* Set background color to green */
+    color: #000; /* Set text color to black for contrast */
+    padding: 0.75em 1.5em; /* Adjust padding for a balanced look */
+    border: none;
+    border-radius: 5px; /* Rounded corners for a sleek look */
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition on hover */
+    text-align: center;
+    display: inline-block;
+}
+
+/* Hover Effect */
+.buy-now:hover {
+    background-color: lime; /* Lighter green on hover */
+    transform: scale(1.05); /* Slight scaling effect for emphasis */
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Green glow shadow effect */
+    color: #000; /* Maintain text color on hover */
+}
+
 /* Product Section */
 .product-section {
     padding: 8em 1em;
