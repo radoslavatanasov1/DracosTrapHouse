@@ -36,7 +36,6 @@ nav {
     flex-wrap: wrap;
 }
 
-/* Ensure even spacing and link styling is consistent */
 .nav-links {
     display: flex;
     justify-content: space-evenly;
@@ -70,52 +69,38 @@ nav a {
 /* Cart Badge */
 .cart-badge {
     position: absolute;
-    top: -10px; /* Keep it closer to the icon */
-    right: 95px; /* Adjust this to position it correctly near the icon */
+    top: -10px;
+    right: 95px;
     background-color: #0f0;
     color: #000;
-    border-radius: 50%; /* Ensures the shape is a perfect circle */
-    width: 20px; /* Set a fixed width */
-    height: 20px; /* Set the height to match the width */
-    display: flex; /* Flexbox to center the text */
-    justify-content: center; /* Center the number horizontally */
-    align-items: center; /* Center the number vertically */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: bold;
     font-size: 0.8em;
-    display: none; /* Hidden by default */
+    display: none;
 }
 
 /* Cart Icon Hover - Custom Effect */
 .cart-link:hover .cart-icon {
-    filter: drop-shadow(0 0 10px #0f0); /* Only apply shadow effect */
-}
-
-/* Rocking effect */
-@keyframes cart-move {
-    0% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(5px);
-    }
-    100% {
-        transform: translateX(0);
-    }
+    filter: drop-shadow(0 0 10px #0f0);
 }
 
 .cart-link {
-    position: relative; /* Important for the badge positioning */
+    position: relative;
 }
 
-/* Product Page Styling */
+/* Product Section */
 .product-section {
-    padding: 8em 1em; /* Increased padding to lower the content */
+    padding: 8em 1em;
     text-align: center;
     background-color: transparent;
     color: #fff;
 }
 
-/* Main product and thumbnail container */
 .product-container {
     display: flex;
     justify-content: center;
@@ -133,20 +118,20 @@ nav a {
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
     transition: transform 0.3s ease, filter 0.3s ease;
-    margin-bottom: 1em; /* Added margin to create space below the main image */
+    margin-bottom: 1em;
 }
 
 .product-main-image img:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
-    filter: brightness(70%); /* Darker, more dramatic effect */
+    transform: scale(1.05);
+    filter: brightness(70%);
 }
 
 /* Thumbnails */
 .product-thumbnails {
     display: flex;
     justify-content: center;
-    gap: 1em; /* Increased gap to avoid overlap on hover */
-    margin-top: 1em; /* Adjusts distance from the main image */
+    gap: 1em;
+    margin-top: 1em;
 }
 
 .product-thumbnails img {
@@ -158,15 +143,15 @@ nav a {
 }
 
 .product-thumbnails img:hover {
-    transform: scale(1.1); /* Slight zoom effect */
-    filter: brightness(70%); /* Darker effect on thumbnails */
+    transform: scale(1.1);
+    filter: brightness(70%);
 }
 
-/* Product Details with Black Background Screen */
+/* Product Details */
 .product-details {
     text-align: left;
     max-width: 500px;
-    background-color: rgba(0, 0, 0, 0.85); /* Black hover screen */
+    background-color: rgba(0, 0, 0, 0.85);
     padding: 1.5em;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
@@ -174,7 +159,7 @@ nav a {
 
 .product-details h1 {
     font-size: 2em;
-    color: #0f0; /* Changed to green for product title */
+    color: #0f0;
     margin-bottom: 0.5em;
 }
 
@@ -192,11 +177,6 @@ nav a {
     margin-bottom: 1em;
 }
 
-.product-details h1, .product-details .price, .product-details .free-shipping {
-    text-align: left;
-}
-
-/* Placeholder for live Amazon rating */
 .product-details .amazon-rating {
     font-size: 1.2em;
     color: #ffd700;
@@ -221,7 +201,28 @@ nav a {
     margin-bottom: 0.5em;
 }
 
-.buy-now {
+/* Quantity Selection */
+.product-details label {
+    display: block;
+    font-size: 1em;
+    color: #fff;
+    margin-top: 1em;
+}
+
+.product-details input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    margin: 0.5em 0 1em;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    text-align: center;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+/* Add to Cart Button */
+.add-to-cart {
     background-color: #0f0;
     color: #000;
     padding: 0.75em 1.5em;
@@ -233,10 +234,10 @@ nav a {
     transition: all 0.3s ease;
 }
 
-.buy-now:hover {
+.add-to-cart:hover {
     background-color: lime;
     transform: scale(1.05);
-    text-decoration: none; /* Remove underline */
+    text-decoration: none;
 }
 
 /* Footer */
