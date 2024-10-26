@@ -1,17 +1,41 @@
-// Function to update cart badge
+// Function to update cart badge based on local storage data
 function updateCartBadge() {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     const cartBadge = document.querySelector('.cart-badge');
     
-    // Check if the badge element exists before modifying it
     if (cartBadge) {
         const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
         
-        // Always display the badge, defaulting to "0" if no items
         cartBadge.style.display = 'flex';
         cartBadge.textContent = itemCount > 0 ? itemCount : '0';
     }
 }
+
+// Function to add items to the cart
+function addToCart(item) {
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // Check if item already exists in cart
+    const existingItemIndex = cartItems.findIndex(cartItem => cartItem.id === item.id);
+
+    if (existingItemIndex > -1) {
+        // If item exists, update the quantity
+        cartItems[existingItemIndex].quantity += item.quantity;
+    } else {
+        // If item does not exist, add it to the cart
+        cartItems.push(item);
+    }
+
+    // Update local storage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+    // Update cart badge
+    updateCartBadge();
+}
+
+// Call updateCartBadge on page load
+window.onload = updateCartBadge;
+
 
 // Add item to cart
 function addToCart(item) {
