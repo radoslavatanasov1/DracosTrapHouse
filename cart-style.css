@@ -36,7 +36,7 @@ nav {
     flex-wrap: wrap;
 }
 
-/* Nav links styling with hover effect */
+/* Ensure even spacing and link styling is consistent */
 .nav-links {
     display: flex;
     justify-content: space-evenly;
@@ -44,7 +44,7 @@ nav {
     flex: 1;
 }
 
-nav a:not(.cart-link) { /* Remove hover effect from cart-link */
+nav a {
     color: rgb(205, 205, 205);
     padding: 0.5em 1em;
     text-decoration: none;
@@ -52,11 +52,13 @@ nav a:not(.cart-link) { /* Remove hover effect from cart-link */
     position: relative;
     cursor: pointer;
     text-align: center;
+    flex: 1;
     line-height: 1.5em;
 }
 
-/* Hover effect for all nav links except cart-link */
-nav a:not(.cart-link)::before, nav a:not(.cart-link)::after {
+/* Remove hover effect from cart-link */
+.nav-links a:not(.cart-link)::before, 
+.nav-links a:not(.cart-link)::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -67,16 +69,21 @@ nav a:not(.cart-link)::before, nav a:not(.cart-link)::after {
     transition: transform 0.3s ease;
 }
 
-nav a:not(.cart-link)::before {
+.nav-links a:not(.cart-link)::before {
     top: 0;
 }
 
-nav a:not(.cart-link)::after {
+.nav-links a:not(.cart-link)::after {
     bottom: 0;
 }
 
-nav a:not(.cart-link):hover::before, nav a:not(.cart-link):hover::after {
+.nav-links a:not(.cart-link):hover::before, 
+.nav-links a:not(.cart-link):hover::after {
     transform: scaleX(1);
+}
+
+nav a.active {
+    color: #fff;
 }
 
 /* Cart Icon */
@@ -90,28 +97,10 @@ nav a:not(.cart-link):hover::before, nav a:not(.cart-link):hover::after {
     z-index: 15;
 }
 
-/* Cart Badge */
-.cart-badge {
-    position: absolute;
-    top: -10px; /* Keep it closer to the icon */
-    right: -10px; /* Adjusted to position it correctly near the icon */
-    background-color: #0f0;
-    color: #000;
-    border-radius: 50%; /* Ensures the shape is a perfect circle */
-    width: 20px; /* Set a fixed width */
-    height: 20px; /* Set the height to match the width */
-    display: flex; /* Flexbox to center the text */
-    justify-content: center; /* Center the number horizontally */
-    align-items: center; /* Center the number vertically */
-    font-weight: bold;
-    font-size: 0.8em;
-    display: none; /* Hidden by default */
-}
-
-/* Cart Icon Hover - Only Shadow and Rocking Effect */
+/* Cart Icon Hover - Custom Effect */
 .cart-link:hover .cart-icon {
-    filter: drop-shadow(0 0 10px #0f0); /* Only apply shadow effect */
-    animation: cart-move 0.5s infinite linear; /* Rocking effect */
+    filter: drop-shadow(0 0 10px #0f0); /* Outline the shape of the cat and cart */
+    animation: cart-move 0.5s infinite linear;
 }
 
 /* Rocking effect */
@@ -127,8 +116,21 @@ nav a:not(.cart-link):hover::before, nav a:not(.cart-link):hover::after {
     }
 }
 
-.cart-link {
-    position: relative; /* Important for the badge positioning */
+.nav-links .cart-link .cart-badge {
+    display: flex; /* Force badge to show */
+    position: absolute;
+    top: -10px;
+    right: 95px;
+    background-color: #0f0;
+    color: #000;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 0.8em;
+    z-index: 15;
 }
 
 /* Cart Section */

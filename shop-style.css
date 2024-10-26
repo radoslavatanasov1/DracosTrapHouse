@@ -116,6 +116,23 @@ nav a.active {
     }
 }
 
+.nav-links .cart-link .cart-badge {
+    display: flex; /* Force badge to show */
+    position: absolute;
+    top: -10px;
+    right: 95px;
+    background-color: #0f0;
+    color: #000;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 0.8em;
+    z-index: 15;
+}
+
 /* Shop Page */
 .shop-section {
     padding: 3em 1em;

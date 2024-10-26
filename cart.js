@@ -3,11 +3,13 @@ function updateCartBadge() {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     const cartBadge = document.querySelector('.cart-badge');
     
-    if (cartItems.length > 0) {
-        cartBadge.style.display = 'flex'; // Show the badge
-        cartBadge.textContent = cartItems.reduce((total, item) => total + item.quantity, 0); // Update badge with total item count
-    } else {
-        cartBadge.style.display = 'none'; // Hide the badge if no items
+    // Check if the badge element exists before modifying it
+    if (cartBadge) {
+        const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+        
+        // Always display the badge, defaulting to "0" if no items
+        cartBadge.style.display = 'flex';
+        cartBadge.textContent = itemCount > 0 ? itemCount : '0';
     }
 }
 
