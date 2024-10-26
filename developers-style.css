@@ -36,6 +36,7 @@ nav {
     flex-wrap: wrap;
 }
 
+/* Ensure even spacing and link styling is consistent */
 .nav-links {
     display: flex;
     justify-content: space-evenly;
@@ -52,9 +53,12 @@ nav a {
     cursor: pointer;
     text-align: center;
     flex: 1;
+    line-height: 1.5em;
 }
 
-nav a::before, nav a::after {
+/* Remove hover effect from cart-link */
+.nav-links a:not(.cart-link)::before, 
+.nav-links a:not(.cart-link)::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -65,20 +69,51 @@ nav a::before, nav a::after {
     transition: transform 0.3s ease;
 }
 
-nav a::before {
+.nav-links a:not(.cart-link)::before {
     top: 0;
 }
 
-nav a::after {
+.nav-links a:not(.cart-link)::after {
     bottom: 0;
 }
 
-nav a:hover::before, nav a:hover::after {
+.nav-links a:not(.cart-link):hover::before, 
+.nav-links a:not(.cart-link):hover::after {
     transform: scaleX(1);
 }
 
 nav a.active {
     color: #fff;
+}
+
+/* Cart Icon */
+.cart-icon {
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 15;
+}
+
+/* Cart Icon Hover - Custom Effect */
+.cart-link:hover .cart-icon {
+    filter: drop-shadow(0 0 10px #0f0); /* Outline the shape of the cat and cart */
+    animation: cart-move 0.5s infinite linear;
+}
+
+/* Rocking effect */
+@keyframes cart-move {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 /* Hamburger menu for mobile */

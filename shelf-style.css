@@ -36,6 +36,7 @@ nav {
     flex-wrap: wrap;
 }
 
+/* Ensure even spacing and link styling is consistent */
 .nav-links {
     display: flex;
     justify-content: space-evenly;
@@ -55,6 +56,36 @@ nav a {
     line-height: 1.5em;
 }
 
+/* Remove hover effect from cart-link */
+.nav-links a:not(.cart-link)::before, 
+.nav-links a:not(.cart-link)::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #0f0;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:not(.cart-link)::before {
+    top: 0;
+}
+
+.nav-links a:not(.cart-link)::after {
+    bottom: 0;
+}
+
+.nav-links a:not(.cart-link):hover::before, 
+.nav-links a:not(.cart-link):hover::after {
+    transform: scaleX(1);
+}
+
+nav a.active {
+    color: #fff;
+}
+
 /* Cart Icon */
 .cart-icon {
     width: 40px;
@@ -66,27 +97,23 @@ nav a {
     z-index: 15;
 }
 
-/* Cart Badge */
-.cart-badge {
-    position: absolute;
-    top: -10px;
-    right: 95px;
-    background-color: #0f0;
-    color: #000;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 0.8em;
-    display: none;
-}
-
 /* Cart Icon Hover - Custom Effect */
 .cart-link:hover .cart-icon {
-    filter: drop-shadow(0 0 10px #0f0);
+    filter: drop-shadow(0 0 10px #0f0); /* Outline the shape of the cat and cart */
+    animation: cart-move 0.5s infinite linear;
+}
+
+/* Rocking effect */
+@keyframes cart-move {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .cart-link {
