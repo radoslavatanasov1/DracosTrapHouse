@@ -5,49 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - DracosTrapHouse</title>
     <link rel="stylesheet" href="cart-style.css">
+    <!-- Include Buy With Prime Script -->
+    <script async fetchpriority="high" src="https://code.buywithprime.amazon.com/bwp.v1.js"></script>
 </head>
 <body>
     <!-- Matrix Background Animation -->
     <div class="matrix-bg"></div>
 
-     <!-- Navigation -->
-<nav>
-    <div class="hamburger-menu">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div>
-    <div class="nav-links">
-        <a href="home.html" class="nav-link">Home</a>
-        <a href="home.html#about" class="nav-link">About Us</a>
-        <a href="shop.html" class="nav-link">Shop</a>
-        <a href="contact-us.html" class="nav-link">Contact Us</a>
-        <a href="our-developers.html" class="nav-link">Our Developers</a>
-        <!-- Cart Icon with Badge -->
-        <a href="cart.html" class="cart-link">
-            <img src="images/addtoCart.png" alt="Cart Icon" class="cart-icon">
-            <span id="cart-count" class="cart-badge" style="display: flex;">0</span>
-        </a>
-    </div>
-</nav>
+    <!-- Navigation -->
+    <nav>
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="nav-links">
+            <a href="home.html" class="nav-link">Home</a>
+            <a href="home.html#about" class="nav-link">About Us</a>
+            <a href="shop.html" class="nav-link">Shop</a>
+            <a href="contact-us.html" class="nav-link">Contact Us</a>
+            <a href="our-developers.html" class="nav-link">Our Developers</a>
+            <!-- Cart Icon with Badge -->
+            <a href="cart.html" class="cart-link">
+                <img src="images/addtoCart.png" alt="Cart Icon" class="cart-icon">
+                <span id="cart-count" class="cart-badge">0</span>
+            </a>
+        </div>
+    </nav>
 
     <!-- Cart Section -->
     <section class="cart-section">
         <h1>Your Cart</h1>
-        <div class="cart-container">
-            <!-- Cart items will be dynamically added here -->
+        <div class="cart-layout">
+            <!-- Cart Items Container -->
+            <div class="cart-container">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+
+            <!-- Buy With Prime Cart Widget -->
+            <div id="cart-summary" class="cart-summary">
+                <h2>Cart Summary</h2>
+                <p id="cart-subtotal">Subtotal: $0.00</p>
+                <div
+                    id="amzn-bwp-cart"
+                    data-site-id="9bwvxpevcd"
+                    data-widget-id="w-oCpdzLyGfl5wnP1aa7ghn5">
+                </div>
+            </div>
         </div>
     </section>
-
-    <!-- Cart Summary -->
-    <div id="cart-summary" class="cart-summary"></div>
-
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 DracosTrapHouse. All rights reserved.</p>
     </footer>
 
+    <script>
+        // Function to update the Buy With Prime cart widget
+        function updateBuyWithPrimeCart() {
+            const cartSubtotal = document.getElementById('cart-subtotal');
+            const cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+            const subtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+
+            if (cartSubtotal) {
+                cartSubtotal.textContent = `Subtotal: $${subtotal}`;
+            }
+
+            // Ensure Buy With Prime cart widget refreshes correctly
+            const bwpCart = document.getElementById('amzn-bwp-cart');
+            if (bwpCart) {
+                bwpCart.setAttribute('data-site-id', '9bwvxpevcd');
+                bwpCart.setAttribute('data-widget-id', 'w-oCpdzLyGfl5wnP1aa7ghn5');
+            }
+        }
+
+        // Initialize cart items and Buy With Prime on page load
+        window.onload = function() {
+            updateBuyWithPrimeCart();
+        };
+    </script>
     <script src="cart.js"></script>
 </body>
 </html>

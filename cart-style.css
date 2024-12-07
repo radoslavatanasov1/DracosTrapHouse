@@ -56,8 +56,8 @@ nav a {
     line-height: 1.5em;
 }
 
-/* Remove hover effect from cart-link */
-.nav-links a:not(.cart-link)::before, 
+/* Hover Effects */
+.nav-links a:not(.cart-link)::before,
 .nav-links a:not(.cart-link)::after {
     content: '';
     position: absolute;
@@ -77,7 +77,7 @@ nav a {
     bottom: 0;
 }
 
-.nav-links a:not(.cart-link):hover::before, 
+.nav-links a:not(.cart-link):hover::before,
 .nav-links a:not(.cart-link):hover::after {
     transform: scaleX(1);
 }
@@ -97,9 +97,9 @@ nav a.active {
     z-index: 15;
 }
 
-/* Cart Icon Hover - Custom Effect */
+/* Cart Icon Hover */
 .cart-link:hover .cart-icon {
-    filter: drop-shadow(0 0 10px #0f0); /* Outline the shape of the cat and cart */
+    filter: drop-shadow(0 0 10px #0f0);
     animation: cart-move 0.5s infinite linear;
 }
 
@@ -117,7 +117,7 @@ nav a.active {
 }
 
 .nav-links .cart-link .cart-badge {
-    display: flex; /* Force badge to show */
+    display: flex;
     position: absolute;
     top: -10px;
     right: 95px;
@@ -146,9 +146,17 @@ nav a.active {
     margin-bottom: 1.5em;
 }
 
-.cart-container {
-    max-width: 800px;
+.cart-layout {
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+    max-width: 1200px;
     margin: 0 auto;
+}
+
+/* Cart Items Container */
+.cart-container {
+    flex: 3;
     background-color: rgba(0, 0, 0, 0.85);
     padding: 2em;
     border-radius: 10px;
@@ -222,8 +230,13 @@ nav a.active {
 
 /* Cart Summary */
 .cart-summary {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
     text-align: left;
-    margin-top: 2em;
 }
 
 .cart-summary h2 {
@@ -237,22 +250,8 @@ nav a.active {
     color: #fff;
 }
 
-/* Checkout Button */
-.checkout-btn {
-    background-color: #0f0;
-    color: #000;
-    padding: 0.75em 1.5em;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.checkout-btn:hover {
-    background-color: lime;
-    transform: scale(1.05);
+#amzn-bwp-cart {
+    margin-top: 1.5em;
 }
 
 /* Footer */

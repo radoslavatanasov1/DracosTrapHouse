@@ -5,34 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Page - Garage Paper Towel Holder</title>
     <link rel="stylesheet" href="shelf-style.css">
+    <script async src="https://code.buywithprime.amazon.com/bwp.v1.js"></script>
 </head>
 <body>
     <!-- Matrix Background Animation -->
     <div class="matrix-bg"></div>
 
-<!-- Navigation -->
-<nav>
-    <div class="hamburger-menu">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div>
-    
-    <div class="nav-links">
-        <a href="home.html" class="nav-link">Home</a>
-        <a href="home.html#about" class="nav-link">About Us</a>
-        <a href="shop.html" class="nav-link">Shop</a>
-        <a href="contact-us.html" class="nav-link">Contact Us</a>
-        <a href="our-developers.html" class="nav-link">Our Developers</a>
-        <!-- Cart Icon with Badge -->
-        <a href="cart.html" class="cart-link">
-            <img src="images/addtoCart.png" alt="Cart Icon" class="cart-icon">
-            <span id="cart-count" class="cart-badge">0</span>
-        </a>
-    </div>
-</nav>
+    <!-- Navigation -->
+    <nav>
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        
+        <div class="nav-links">
+            <a href="home.html" class="nav-link">Home</a>
+            <a href="home.html#about" class="nav-link">About Us</a>
+            <a href="shop.html" class="nav-link">Shop</a>
+            <a href="contact-us.html" class="nav-link">Contact Us</a>
+            <a href="our-developers.html" class="nav-link">Our Developers</a>
+            <!-- Cart Icon with Badge -->
+            <a href="cart.html" class="cart-link">
+                <img src="images/addtoCart.png" alt="Cart Icon" class="cart-icon">
+                <span id="cart-count" class="cart-badge">0</span>
+            </a>
+        </div>
+    </nav>
    
-
     <!-- Product Section -->
     <section class="product-section">
         <div class="product-container">
@@ -40,7 +40,6 @@
             <div class="product-images">
                 <!-- Main Product Image -->
                 <div class="product-main-image">
-                    <!-- The first image (Thumbnail 1) is displayed as the default main image -->
                     <img src="garage-shelf/garageShelf4.jpg" alt="Main Product" id="main-image">
                 </div>
 
@@ -60,7 +59,6 @@
                 <div class="price">$19.99</div>
                 <div class="free-shipping">+ Free Shipping</div>
             
-                <!-- Placeholder for Amazon rating -->
                 <div class="amazon-rating">Amazon Rating: ★★★★☆</div>
             
                 <p>Versatile garage paper towel holder with a sturdy design, built-in hooks for added storage, and a sleek finish, perfect for organizing your workspace efficiently.</p>
@@ -70,21 +68,20 @@
                     <li>Built-in paper towel holder and versatile hooks for convenience</li>
                     <li>Easy to install and supports a variety of tools & supplies</li>
                 </ul>
-                   <!-- Quantity Selection -->
-                   <label for="quantity">Quantity:</label>
-                   <input type="number" id="quantity" name="quantity" value="1" min="1">
-                   
-                   <button 
-                   class="buy-now" 
-                   data-id="shelf01" 
-                   data-name="Garage Paper Towel Holder" 
-                   data-price="19.99" 
-                   data-image="garage-shelf/garageShelf4.jpg">Add to Cart
-               </button>
-               
-               </div>
+
+                <!-- Quantity Selection -->
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" value="1" min="1">
+
+                <!-- Buy With Prime Button -->
+                <div 
+                    id="amzn-bwp-button"
+                    data-sku="IR-4KW3-CER5"
+                    data-quantity="1"
+                    data-site-id="9bwvxpevcd">
+                </div>
             </div>
-            
+        </div>
     </section>
 
     <!-- Footer -->
@@ -97,7 +94,13 @@
             const mainImage = document.getElementById('main-image');
             mainImage.src = element.src;
         }
+
+        // Initialize Buy With Prime widgets
+        window.onload = function() {
+            if (window.BuyWithPrime) {
+                BuyWithPrime.refresh();
+            }
+        };
     </script>
-    <script src="cart.js"></script>
 </body>
 </html>
