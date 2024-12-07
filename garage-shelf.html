@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Page - Garage Paper Towel Holder</title>
     <link rel="stylesheet" href="shelf-style.css">
-    <script async src="https://code.buywithprime.amazon.com/bwp.v1.js"></script>
 </head>
+
 <body>
     <!-- Matrix Background Animation -->
     <div class="matrix-bg"></div>
@@ -18,7 +19,7 @@
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        
+
         <div class="nav-links">
             <a href="home.html" class="nav-link">Home</a>
             <a href="home.html#about" class="nav-link">About Us</a>
@@ -32,7 +33,7 @@
             </a>
         </div>
     </nav>
-   
+
     <!-- Product Section -->
     <section class="product-section">
         <div class="product-container">
@@ -58,10 +59,11 @@
                 <h1>Garage Paper Towel Holder</h1>
                 <div class="price">$19.99</div>
                 <div class="free-shipping">+ Free Shipping</div>
-            
-                <div class="amazon-rating">Amazon Rating: ★★★★☆</div>
-            
-                <p>Versatile garage paper towel holder with a sturdy design, built-in hooks for added storage, and a sleek finish, perfect for organizing your workspace efficiently.</p>
+
+                <div class="amazon-rating">Amazon Rating: ★★½☆☆</div>
+
+                <p>Versatile garage paper towel holder with a sturdy design, built-in hooks for added storage, and a
+                    sleek finish, perfect for organizing your workspace efficiently.</p>
                 <ul>
                     <li>Durable shelf with secure bar to prevent falling</li>
                     <li>Space-saving design ideal for garages, workshops, and storage areas</li>
@@ -69,18 +71,17 @@
                     <li>Easy to install and supports a variety of tools & supplies</li>
                 </ul>
 
-                <!-- Quantity Selection -->
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" value="1" min="1">
+                <!--Amazon Buy Now Button-->
+                <script async fetchpriority="high" src="https://code.buywithprime.amazon.com/bwp.v1.js"></script>
+                <div id="amzn-buy-now" data-site-id="9bwvxpevcd" data-widget-id="w-oCpdzLyGfl5wnP1aa7ghn5" data-sku="IR-4KW3-CER5"></div>
 
-               <!--Amazon Buy Now Button-->
-                <div
-                id="amzn-buy-now"
-                data-site-id="9bwvxpevcd"
-                data-widget-id="w-oCpdzLyGfl5wnP1aa7ghn5"
-                data-sku="IR-4KW3-CER5"
-                ></div>
+                <!-- Buy With Prime Cart Widget -->
+                <div id="cart-summary" class="cart-summary">
+                    <div id="amzn-bwp-cart" data-site-id="9bwvxpevcd" data-widget-id="w-oCpdzLyGfl5wnP1aa7ghn5"></div>
+                </div>
 
+                <!-- Back to Shop Button -->
+                <a href="shop.html" class="back-to-shop">Back to Shop</a>
             </div>
         </div>
     </section>
@@ -98,14 +99,6 @@
 
         // Initialize Buy With Prime widgets
         document.addEventListener('DOMContentLoaded', function () {
-            const productData = document.getElementById('product-data');
-            const buyWithPrimeButton = document.getElementById('amzn-bwp-button');
-
-            if (productData && buyWithPrimeButton) {
-                // Dynamically set SKU from product data
-                buyWithPrimeButton.setAttribute('data-sku', productData.getAttribute('data-sku'));
-            }
-
             if (window.BuyWithPrime) {
                 BuyWithPrime.refresh();
             } else {
@@ -114,4 +107,5 @@
         });
     </script>
 </body>
+
 </html>

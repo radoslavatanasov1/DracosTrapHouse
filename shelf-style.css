@@ -249,44 +249,39 @@ nav a.active {
     font-size: 1.2em;
     color: #ffd700;
     margin-top: 1em;
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
 }
 
-.product-details p, .product-details ul {
-    font-size: 1.2em;
-    line-height: 1.6;
-    color: #aaa;
-}
-
-.product-details ul {
-    list-style-type: square;
-    margin: 1em 0;
-    padding-left: 1.5em;
-}
-
-.product-details ul li {
-    font-size: 1em;
-    color: #aaa;
-    margin-bottom: 0.5em;
-}
-
-/* Quantity Selection */
-.product-details label {
-    display: block;
-    font-size: 1em;
+.product-details .amazon-rating span {
     color: #fff;
-    margin-top: 1em;
 }
 
-.product-details input[type="number"] {
-    width: 60px;
-    padding: 5px;
-    margin: 0.5em 0 1em;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    text-align: center;
+/* Back to Shop Button */
+.product-details .back-to-shop {
+    display: inline-block;
+    margin-top: 2em;
+    padding: 0.75em 1.5em;
+    background-color: #0f0 !important; /* Ensure green background */
+    color: #000 !important; /* Ensure black text */
+    font-weight: bold;
     font-size: 1em;
     border-radius: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: none !important; /* Remove any conflicting shadow */
+}
+
+/* Hover Effect */
+.product-details .back-to-shop:hover {
+    background-color: lime !important;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5) !important;
+    text-decoration: none !important;
+    color: #000 !important;
 }
 
 /* Footer */

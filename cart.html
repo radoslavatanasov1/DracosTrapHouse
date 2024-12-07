@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - DracosTrapHouse</title>
     <link rel="stylesheet" href="cart-style.css">
-    <!-- Include Buy With Prime Script -->
-    <script async fetchpriority="high" src="https://code.buywithprime.amazon.com/bwp.v1.js"></script>
 </head>
 <body>
     <!-- Matrix Background Animation -->
@@ -42,15 +40,9 @@
                 <!-- Cart items will be dynamically added here -->
             </div>
 
-            <!-- Buy With Prime Cart Widget -->
+            <!-- Cart Summary -->
             <div id="cart-summary" class="cart-summary">
-                <h2>Cart Summary</h2>
-                <p id="cart-subtotal">Subtotal: $0.00</p>
-                <div
-                    id="amzn-bwp-cart"
-                    data-site-id="9bwvxpevcd"
-                    data-widget-id="w-oCpdzLyGfl5wnP1aa7ghn5">
-                </div>
+                <!-- Summary content will be dynamically added here -->
             </div>
         </div>
     </section>
@@ -60,30 +52,6 @@
         <p>&copy; 2024 DracosTrapHouse. All rights reserved.</p>
     </footer>
 
-    <script>
-        // Function to update the Buy With Prime cart widget
-        function updateBuyWithPrimeCart() {
-            const cartSubtotal = document.getElementById('cart-subtotal');
-            const cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
-            const subtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
-
-            if (cartSubtotal) {
-                cartSubtotal.textContent = `Subtotal: $${subtotal}`;
-            }
-
-            // Ensure Buy With Prime cart widget refreshes correctly
-            const bwpCart = document.getElementById('amzn-bwp-cart');
-            if (bwpCart) {
-                bwpCart.setAttribute('data-site-id', '9bwvxpevcd');
-                bwpCart.setAttribute('data-widget-id', 'w-oCpdzLyGfl5wnP1aa7ghn5');
-            }
-        }
-
-        // Initialize cart items and Buy With Prime on page load
-        window.onload = function() {
-            updateBuyWithPrimeCart();
-        };
-    </script>
     <script src="cart.js"></script>
 </body>
 </html>
