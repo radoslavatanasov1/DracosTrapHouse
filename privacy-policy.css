@@ -84,53 +84,8 @@ nav a.active {
     color: #fff;
 }
 
-/* Cart Icon */
-.cart-icon {
-    width: 40px;
-    height: auto;
-    cursor: pointer;
-    border: none;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 15;
-}
-
-.cart-link:hover .cart-icon {
-    filter: drop-shadow(0 0 10px #0f0);
-    animation: cart-move 0.5s infinite linear;
-}
-
-@keyframes cart-move {
-    0% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(5px);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-.nav-links .cart-link .cart-badge {
-    display: flex;
-    position: absolute;
-    top: -10px;
-    right: 95px;
-    background-color: #0f0;
-    color: #000;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 0.8em;
-    z-index: 15;
-}
-
-/* Terms Section */
-.terms-section {
+/* Privacy Section */
+.privacy-section {
     max-width: 800px;
     margin: 100px auto;
     padding: 2em;
@@ -141,14 +96,14 @@ nav a.active {
     font-family: 'Montserrat', sans-serif;
 }
 
-.terms-section h1 {
+.privacy-section h1 {
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 20px;
     color: #0f0;
 }
 
-.terms-section h2 {
+.privacy-section h2 {
     font-size: 1.5rem;
     margin-top: 20px;
     color: #fff;
@@ -156,11 +111,19 @@ nav a.active {
     padding-bottom: 0.5em;
 }
 
-.terms-section p {
+.privacy-section p, .privacy-section ul {
     font-size: 1rem;
     line-height: 1.8;
     margin-bottom: 10px;
     color: #ddd;
+}
+
+.privacy-section ul {
+    padding-left: 1.5em;
+}
+
+.privacy-section ul li {
+    margin-bottom: 0.5em;
 }
 
 /* Footer */
@@ -174,4 +137,3 @@ footer {
     color: #0f0;
     font-size: 0.9rem;
 }
-
