@@ -19,7 +19,7 @@
 
     <!-- Navigation -->
     <nav>
-        <div class="hamburger-menu">
+        <div class="hamburger-menu" onclick="toggleMenu()">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
@@ -34,6 +34,7 @@
             <a href="privacy-policy.html" class="nav-link">Privacy Policy</a>
         </div>
     </nav>
+
 
     <!-- Home Section -->
     <div class="hero" id="home">
@@ -57,6 +58,14 @@
     <footer>
         <p>&copy; 2024 DracosTrapHouse. All rights reserved.</p>
     </footer>
+    <script>
+            function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            navLinks.classList.toggle('nav-active');
+            hamburgerMenu.classList.toggle('toggle');
+        }
+    </script>
 </body>
 
 </html>

@@ -14,7 +14,7 @@
 
     <!-- Navigation -->
     <nav>
-        <div class="hamburger-menu">
+        <div class="hamburger-menu" onclick="toggleMenu()">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
@@ -92,6 +92,14 @@
     </footer>
 
     <script>
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            navLinks.classList.toggle('nav-active');
+            hamburgerMenu.classList.toggle('toggle');
+        }
+
         function changeImage(element) {
             const mainImage = document.getElementById('main-image');
             mainImage.src = element.src;
