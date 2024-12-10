@@ -24,19 +24,52 @@ body {
 /* Navigation bar */
 nav {
     background: rgba(0, 0, 0, 0.8);
-    padding: 1em 0;
-    text-align: center;
+    padding: 0.8em 1em;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 10;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 }
 
-/* Ensure even spacing and link styling is consistent */
+/* Hamburger menu styles */
+.hamburger-menu {
+    display: none; /* Hide by default */
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 20;
+    margin-left: left; /* Correct alignment */
+}
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+}
+
+
+.hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    margin: 3px 0;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu.toggle .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.hamburger-menu.toggle .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.toggle .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -5px);
+}
+
+/* Navigation links */
 .nav-links {
     display: flex;
     justify-content: space-evenly;
@@ -51,40 +84,45 @@ nav a {
     font-weight: bold;
     position: relative;
     cursor: pointer;
-    text-align: center;
-    flex: 1;
-    line-height: 1.5em;
 }
 
-/* Remove hover effect from cart-link */
-.nav-links a:not(.cart-link)::before, 
-.nav-links a:not(.cart-link)::after {
-    content: '';
+.nav-links.nav-active {
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    width: 100%;
-    height: 2px;
-    background: #0f0;
+    top: 100%;
     left: 0;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+    width: 100vw; /* Ensure full width */
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 10;
 }
 
-.nav-links a:not(.cart-link)::before {
-    top: 0;
+.nav-links a {
+    padding: 1em 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+
 }
 
-.nav-links a:not(.cart-link)::after {
-    bottom: 0;
+.nav-links a:last-child {
+    border: none;
 }
 
-.nav-links a:not(.cart-link):hover::before, 
-.nav-links a:not(.cart-link):hover::after {
-    transform: scaleX(1);
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    nav {
+        flex-wrap: nowrap;
+    }
 }
 
-nav a.active {
-    color: #fff;
-}
 
 /* Cart Icon */
 .cart-icon {
@@ -99,7 +137,7 @@ nav a.active {
 
 /* Cart Icon Hover - Custom Effect */
 .cart-link:hover .cart-icon {
-    filter: drop-shadow(0 0 10px #0f0); /* Outline the shape of the cat and cart */
+    filter: drop-shadow(0 0 10px #0f0);
     animation: cart-move 0.5s infinite linear;
 }
 
@@ -121,7 +159,7 @@ nav a.active {
 }
 
 .nav-links .cart-link .cart-badge {
-    display: flex; /* Force badge to show */
+    display: flex;
     position: absolute;
     top: -10px;
     right: 95px;
@@ -139,26 +177,26 @@ nav a.active {
 
 /* Add to Cart Button Styles */
 .buy-now {
-    background-color: #0f0; /* Set background color to green */
-    color: #000; /* Set text color to black for contrast */
-    padding: 0.75em 1.5em; /* Adjust padding for a balanced look */
+    background-color: #0f0;
+    color: #000;
+    padding: 0.75em 1.5em;
     border: none;
-    border-radius: 5px; /* Rounded corners for a sleek look */
+    border-radius: 5px;
     font-weight: bold;
     font-size: 1em;
     text-transform: uppercase;
     cursor: pointer;
-    transition: all 0.3s ease; /* Smooth transition on hover */
+    transition: all 0.3s ease;
     text-align: center;
     display: inline-block;
 }
 
 /* Hover Effect */
 .buy-now:hover {
-    background-color: lime; /* Lighter green on hover */
-    transform: scale(1.05); /* Slight scaling effect for emphasis */
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Green glow shadow effect */
-    color: #000; /* Maintain text color on hover */
+    background-color: lime;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    color: #000;
 }
 
 /* Product Section */
@@ -249,65 +287,60 @@ nav a.active {
     font-size: 1.2em;
     color: #ffd700;
     margin-top: 1em;
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
 }
 
-.product-details p, .product-details ul {
-    font-size: 1.2em;
-    line-height: 1.6;
-    color: #aaa;
-}
-
-.product-details ul {
-    list-style-type: square;
-    margin: 1em 0;
-    padding-left: 1.5em;
-}
-
-.product-details ul li {
-    font-size: 1em;
-    color: #aaa;
-    margin-bottom: 0.5em;
-}
-
-/* Quantity Selection */
-.product-details label {
-    display: block;
-    font-size: 1em;
+.product-details .amazon-rating span {
     color: #fff;
-    margin-top: 1em;
 }
 
-.product-details input[type="number"] {
-    width: 60px;
-    padding: 5px;
-    margin: 0.5em 0 1em;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    text-align: center;
-    font-size: 1em;
-    border-radius: 5px;
-}
-
-/* Add to Cart Button */
-.add-to-cart {
-    background-color: #0f0;
-    color: #000;
+/* Back to Shop Button */
+.product-details .back-to-shop {
+    display: inline-block;
+    margin-top: 2em;
     padding: 0.75em 1.5em;
-    border: none;
+    background-color: #0f0 !important; /* Ensure green background */
+    color: #000 !important; /* Ensure black text */
+    font-weight: bold;
+    font-size: 1em;
     border-radius: 5px;
     text-decoration: none;
-    font-weight: bold;
+    text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: none !important; /* Remove any conflicting shadow */
 }
 
-.add-to-cart:hover {
-    background-color: lime;
+/* Hover Effect */
+.product-details .back-to-shop:hover {
+    background-color: lime !important;
     transform: scale(1.05);
-    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5) !important;
+    text-decoration: none !important;
+    color: #000 !important;
 }
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        padding: 0;
+        margin: 0;
+    }
 
+    .nav-links.nav-active {
+        display: flex;
+    }
+
+    .nav-links a {
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links a:last-child {
+        border: none;
+    }
+}
 /* Footer */
 footer {
     background: rgba(0, 0, 0, 0.8);

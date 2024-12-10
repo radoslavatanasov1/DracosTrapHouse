@@ -3,57 +3,97 @@
 
 /* Body and general styles */
 body {
+    padding: 0;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     background-color: #000;
     color: #fff;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    width: 100%;
 }
 
+
+.matrix-bg, .nav-links, .hero, .about {
+    max-width: 100vw; /* Ensure elements fit within the viewport */
+    overflow-x: hidden; /* Prevent individual elements from overflowing */
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links.nav-active {
+    width: 100vw; /* Ensure mobile menu doesn't overflow */
+}
+
+.about, .hero {
+    padding: 1em;
+    margin: 0 auto;
+    width: 100%; /* Ensure sections fit within viewport */
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
 /* Matrix background */
 .matrix-bg {
     position: fixed;
-    width: 100%;
-    height: 100%;
+    width: 100vw; /* Use viewport width to prevent overflow */
+    height: 100vh; /* Ensure it fits the viewport */
     z-index: -1;
     background: url('https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif') repeat;
     opacity: 0.2;
+    overflow: hidden;
 }
+
 
 /* Navigation bar */
 nav {
     background: rgba(0, 0, 0, 0.8);
-    padding: 1em 0;
-    text-align: center;
+    padding: 0.8em 1em;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 10;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 }
 
-.nav-links .cart-link .cart-badge {
-    display: flex; /* Force badge to show */
-    position: absolute;
-    top: -10px;
-    right: 95px;
-    background-color: #0f0;
-    color: #000;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 0.8em;
-    z-index: 15;
+/* Hamburger menu styles */
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 20;
+    margin-left: left; /* Align to the right */
 }
 
-/* Ensure even spacing and link styling is consistent */
+.hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    margin: 3px 0;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu.toggle .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.hamburger-menu.toggle .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.toggle .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -5px);
+}
+
+/* Navigation links */
 .nav-links {
     display: flex;
     justify-content: space-evenly;
@@ -68,40 +108,45 @@ nav a {
     font-weight: bold;
     position: relative;
     cursor: pointer;
-    text-align: center;
-    flex: 1;
-    line-height: 1.5em;
 }
 
-/* Remove hover effect from cart-link */
-.nav-links a:not(.cart-link)::before, 
-.nav-links a:not(.cart-link)::after {
-    content: '';
+.nav-links.nav-active {
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    width: 100%;
-    height: 2px;
-    background: #0f0;
+    top: 100%;
     left: 0;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+    width: 100vw; /* Ensure full width */
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 10;
 }
 
-.nav-links a:not(.cart-link)::before {
-    top: 0;
+.nav-links a {
+    padding: 1em 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+
 }
 
-.nav-links a:not(.cart-link)::after {
-    bottom: 0;
+.nav-links a:last-child {
+    border: none;
 }
 
-.nav-links a:not(.cart-link):hover::before, 
-.nav-links a:not(.cart-link):hover::after {
-    transform: scaleX(1);
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    nav {
+        flex-wrap: nowrap;
+    }
 }
 
-nav a.active {
-    color: #fff;
-}
 
 /* Cart Icon */
 .cart-icon {
@@ -223,7 +268,7 @@ nav a.active {
 }
 
 .about-content h2 {
-    font-size: 2em;
+    font-size: 1em;
     margin-bottom: 0.5em;
     color: rgb(255, 255, 255);
     font-weight: 700;
@@ -284,4 +329,30 @@ footer {
 
 a {
     color: #0f0;
+}
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-links.nav-active {
+        display: flex;
+    }
+
+    .nav-links a {
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links a:last-child {
+        border: none;
+    }
+}
+
+@media (max-width: 768px) {
+ #about, h2{
+    font-size: 80%;
+ }
 }

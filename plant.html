@@ -1,53 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Page - Plant Tray</title>
     <link rel="stylesheet" href="plant-style.css">
 </head>
+
 <body>
     <!-- Matrix Background Animation -->
     <div class="matrix-bg"></div>
 
-<!-- Navigation -->
-<nav>
-    <div class="hamburger-menu">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div>
-    <div class="nav-links">
-        <a href="home.html" class="nav-link">Home</a>
-        <a href="home.html#about" class="nav-link">About Us</a>
-        <a href="shop.html" class="nav-link">Shop</a>
-        <a href="contact-us.html" class="nav-link">Contact Us</a>
-        <a href="our-developers.html" class="nav-link">Our Developers</a>
-        <!-- Cart Icon with Badge -->
-        <a href="cart.html" class="cart-link">
-            <img src="images/addtoCart.png" alt="Cart Icon" class="cart-icon">
-            <span id="cart-count" class="cart-badge">0</span>
-        </a>
-    </div>
-</nav>   
+    <!-- Navigation -->
+    <nav>
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="nav-links">
+            <a href="home.html" class="nav-link">Home</a>
+            <a href="home.html#about" class="nav-link">About Us</a>
+            <a href="shop.html" class="nav-link">Shop</a>
+            <a href="contact-us.html" class="nav-link">Contact Us</a>
+            <a href="our-developers.html" class="nav-link">Our Developers</a>
+            <!-- Cart Icon with Badge -->
+            <a href="cart.html" class="cart-link">
+                <img src="images/addtoCart.png" alt="Cart Icon" class="cart-icon">
+                <span id="cart-count" class="cart-badge">0</span>
+            </a>
+        </div>
+    </nav>
 
     <!-- Product Section -->
     <section class="product-section">
         <div class="product-container">
             <!-- Main Product Image and Thumbnails -->
             <div class="product-images">
-                <!-- Main Product Image -->
                 <div class="product-main-image">
                     <img src="plantTray/main1.jpg" alt="Plant Tray" id="main-image">
                 </div>
-
-                <!-- Smaller Image Thumbnails -->
                 <div class="product-thumbnails">
-                    <img src="plantTray/main1.jpg" alt="Plant Tray Thumbnail" class="thumbnail" onclick="changeImage(this)">
-                    <img src="plantTray/plantTray2.jpg" alt="Plant Tray In Use" class="thumbnail" onclick="changeImage(this)">
-                    <img src="plantTray/plantTray1.jpg" alt="Plant Tray Dimensions" class="thumbnail" onclick="changeImage(this)">
-                    <img src="plantTray/plantTray5.jpg" alt="Plant Tray Dimensions" class="thumbnail" onclick="changeImage(this)">
-                    <img src="plantTray/plantTray3.jpg" alt="Plant Tray Dimensions" class="thumbnail" onclick="changeImage(this)">
+                    <img src="plantTray/main1.jpg" alt="Thumbnail 1" class="thumbnail" onclick="changeImage(this)">
+                    <img src="plantTray/plantTray2.jpg" alt="Thumbnail 2" class="thumbnail" onclick="changeImage(this)">
+                    <img src="plantTray/plantTray1.jpg" alt="Thumbnail 3" class="thumbnail" onclick="changeImage(this)">
+                    <img src="plantTray/plantTray5.jpg" alt="Thumbnail 4" class="thumbnail" onclick="changeImage(this)">
+                    <img src="plantTray/plantTray3.jpg" alt="Thumbnail 5" class="thumbnail" onclick="changeImage(this)">
                 </div>
             </div>
 
@@ -57,10 +56,10 @@
                 <div class="price">$7.99</div>
                 <div class="free-shipping">+ Free Shipping</div>
 
-                <!-- Placeholder for Amazon rating -->
-                <div class="amazon-rating">Amazon Rating: ★★★★☆</div>
+                <div class="amazon-rating">Amazon Rating: ☆☆☆☆☆ (No Reviews Yet)</div>
 
-                <p>Durable plant tray for indoor and outdoor use. Keeps your space clean, promotes plant health, and is perfect for a variety of pot sizes.</p>
+                <p>Durable plant tray for indoor and outdoor use. Keeps your space clean, promotes plant health, and is
+                    perfect for a variety of pot sizes.</p>
                 <ul>
                     <li>Sturdy, water-resistant design</li>
                     <li>Fits pots of multiple sizes</li>
@@ -68,17 +67,17 @@
                     <li>Easy to clean and reusable</li>
                 </ul>
 
-                <!-- Quantity Selection -->
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" value="1" min="1">
-                
-                <button 
-    class="buy-now" 
-    data-id="plantTray01" 
-    data-name="Plant Tray" 
-    data-price="7.99" 
-    data-image="plantTray/main1.jpg">Add to Cart
-</button>
+                <!-- Amazon Buy Now Button -->
+                <script async fetchpriority="high" src="https://code.buywithprime.amazon.com/bwp.v1.js"></script>
+                <div id="amzn-buy-now" data-site-id="9bwvxpevcd" data-widget-id="w-oCpdzLyGfl5wnP1aa7ghn5" data-sku="V8-5SSN-DVO8"></div>
+
+                <!-- Buy With Prime Cart Widget -->
+                <div id="cart-summary" class="cart-summary">
+                    <div id="amzn-bwp-cart" data-site-id="9bwvxpevcd" data-widget-id="w-oCpdzLyGfl5wnP1aa7ghn5"></div>
+                </div>
+
+                <!-- Back to Shop Button -->
+                <a href="shop.html" class="back-to-shop">Back to Shop</a>
             </div>
         </div>
     </section>
@@ -89,22 +88,33 @@
     </footer>
 
     <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            navLinks.classList.toggle('nav-active');
+            hamburgerMenu.classList.toggle('toggle');
+        }
+
+        function closeMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            navLinks.classList.remove('nav-active');
+            hamburgerMenu.classList.remove('toggle');
+        }
         function changeImage(element) {
             const mainImage = document.getElementById('main-image');
             mainImage.src = element.src;
         }
 
-        let cartCount = 0;
-
-        document.getElementById('add-to-cart').addEventListener('click', function() {
-            const quantity = parseInt(document.getElementById('quantity').value);
-            cartCount += quantity;
-
-            const cartBadge = document.getElementById('cart-count');
-            cartBadge.textContent = cartCount;
-            cartBadge.style.display = 'block';
+        // Initialize Buy With Prime widgets
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.BuyWithPrime) {
+                BuyWithPrime.refresh();
+            } else {
+                console.error("Buy With Prime SDK is not loaded. Ensure the script is included correctly.");
+            }
         });
     </script>
-    <script src="cart.js"></script>
 </body>
+
 </html>
